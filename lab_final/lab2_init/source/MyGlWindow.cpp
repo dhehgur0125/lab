@@ -151,7 +151,7 @@ void MyGlWindow::setupBuffer()
 		0,//binding index 번호 : vao 컨테이너 안 16개의 vbo슬롯 중 0번
 		vbo_position,//vbo
 		0,//offset
-		sizeof(float)*4 //stride
+		sizeof(float)*4 //stride 간격
 	);
 
 	//color 처리

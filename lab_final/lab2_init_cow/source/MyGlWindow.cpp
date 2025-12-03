@@ -40,13 +40,13 @@ MyGlWindow::MyGlWindow(int w, int h)
 {
 	m_width = w;
 	m_height = h;
-	m_cube = 0;
+	//m_cow = 0;
 
 	glm::mat4 translate = glm::translate(glm::mat4(1.0), glm::vec3(0.0f, 0.0f, 0.0f));
 	glm::mat4 rotate = glm::rotate(glm::mat4(1.0), glm::radians(45.0f), glm::vec3(1.0f, 0.0f, 0.0f));
 	glm::mat4 scale = glm::scale(glm::mat4(1.0), glm::vec3(1.0f, 1.0f, 1.0f));
 
-	model = translate * rotate * scale;
+	model = translate * scale;
 
 	glm::vec3 viewPoint(DEFAULT_VIEW_POINT[0], DEFAULT_VIEW_POINT[1], DEFAULT_VIEW_POINT[2]); 
 	glm::vec3 viewCenter(DEFAULT_VIEW_CENTER[0], DEFAULT_VIEW_CENTER[1], DEFAULT_VIEW_CENTER[2]); 
@@ -66,7 +66,7 @@ MyGlWindow::MyGlWindow(int w, int h)
 void MyGlWindow::initialize()
 {
 	
-	m_cube = std::make_unique<ColorCube>();
+	m_cow = std::make_unique<cow>();
 }
 
 void MyGlWindow::setSize(int size_w, int size_h)
@@ -117,9 +117,9 @@ void MyGlWindow::draw(void)
 	shaderProgram->use();
 	glUniformMatrix4fv(shaderProgram->uniform("mvp"), 1, GL_FALSE, glm::value_ptr(mvp));
 	//2. vao binding
-	if (m_cube) 
+	if (m_cow) 
 	{
-		m_cube->draw();
+		m_cow->draw();
 	}
 	//4. Ω¶¿Ã¥ı disable
 	
